@@ -30,8 +30,8 @@ def read_label (file_name):
             Y.append (qualities.index (label))
     return np.asarray (Y)
 
-Y_train = read_label ("word2vec_train_label.txt")
-Y_test = read_label ("word2vec_test_label.txt")
+Y_train = read_label ("doc2vec_train_label.txt")
+Y_test = read_label ("doc2vec_test_label.txt")
 
 print('Read content')
 
@@ -43,8 +43,8 @@ def read_wiki_content (file_name):
             X.append (map (float, _arr))
     return np.asarray (X)
 
-X_train = read_wiki_content ("word2vec_train_content.txt")
-X_test = read_wiki_content ("word2vec_test_content.txt")
+X_train = read_wiki_content ("doc2vec_train_content.txt")
+X_test = read_wiki_content ("doc2vec_test_content.txt")
 
 print ("Dimension of input: ", len(X_train[0]))
 
@@ -144,7 +144,7 @@ classifier = skflow.TensorFlowDNNClassifier(hidden_units=hidden_units,
                                             n_classes=6, steps=steps,
                                             early_stopping_rounds=early_stopping_rounds)
 print ('Fit model')
-classifier.fit(X_train, Y_train, logdir = "../logdir/doc2vec_skflow_cnn")
+classifier.fit(X_train, Y_train, logdir = "./logdir/doc2vec_dnn")
 
 print ('Predicting')
 prediction = classifier.predict(X_test)

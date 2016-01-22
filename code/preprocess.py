@@ -98,10 +98,10 @@ def write_array_to_file (file_name, array_data):
 qualities = ['FA','GA','B','C','START','STUB']
 train_labels = [0] * 23577
 test_labels = [0] * 5891
-train_content_file = "word2vec_train_content.txt"
-test_content_file = "word2vec_test_content.txt"
-train_label_file = "word2vec_train_label.txt"
-test_label_file = "word2vec_test_label.txt"
+train_content_file = "doc2vec_train_content.txt"
+test_content_file = "doc2vec_test_content.txt"
+train_label_file = "doc2vec_train_label.txt"
+test_label_file = "doc2vec_test_label.txt"
 train_cnt = 0
 test_cnt = 0
 for i in range (len(qualities)):
