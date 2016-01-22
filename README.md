@@ -45,7 +45,7 @@ At the first time, the program will save the model to "enwiki_quality.d2v" file 
 
 **Be careful**
 
-Please note that the ``preprocess.py`` takes a lot of time (several hours on my Macbook Mid-2014) and request a lot of memory. Please prepare for it.
+Please note that the ``preprocess.py`` takes a lot of time (12 hours on my Macbook Mid-2014) and request a lot of memory. Please prepare for it.
 
 ## Classifying
 
@@ -58,3 +58,5 @@ python dnn_classifier.py
 The program will load the trained vectors (as the output of the previous phase), apply DNN and report the accuracy.
 
 The log will be stored in ``logdir/doc2vec_dnn``.
+
+On 22 - Jan - 2016, we achieved the accuracy of 55%.
