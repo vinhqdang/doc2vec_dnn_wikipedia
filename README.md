@@ -43,6 +43,8 @@ The program will read all TXT file, and use Doc2Vec to convert them to vectors w
 
 At the first time, the program will save the model to "enwiki_quality.d2v" file so you can reuse in the future.
 
+*Be careful*
+
 Please note that the ``preprocess.py`` takes a lot of time (several hours on my Macbook Mid-2014) and request a lot of memory. Please prepare for it.
 
 ## Classifying
