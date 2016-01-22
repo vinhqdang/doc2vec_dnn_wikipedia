@@ -17,9 +17,9 @@ And other data files.
 The following tools / libraries are required to execute the program:
 
 - python 2.7 (suggested to use [Anaconda distribution](https://anaconda.org/))
-- [gensim](https://radimrehurek.com/gensim/index.html)
-- [tensorflow](https://www.tensorflow.org)
-- [skflow](https://github.com/tensorflow/skflow)
+- [gensim](https://radimrehurek.com/gensim/index.html) (tested with version 0.13)
+- [tensorflow](https://www.tensorflow.org) (tested with version 0.6.0)
+- [skflow](https://github.com/tensorflow/skflow) (tested with version published on 22 - Jan - 2016)
 
 # Running the implementation:
 
