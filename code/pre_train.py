@@ -57,17 +57,12 @@ class LabeledLineSentence(object):
 #sources = {'test-neg.txt':'TEST_NEG', 'test-pos.txt':'TEST_POS', 'train-neg.txt':'TRAIN_NEG', 'train-pos.txt':'TRAIN_POS', 'train-unsup.txt':'TRAIN_UNS'}
 
 sources = {'train_fa.txt':'TRAIN_FA',
-            'test_fa.txt':'TEST_FA',
             'train_ga.txt':'TRAIN_GA',
-            'test_ga.txt':'TEST_GA',
             'train_b.txt':'TRAIN_B',
-            'test_b.txt':'TEST_B',
             'train_c.txt':'TRAIN_C',
-            'test_c.txt':'TEST_C',
             'train_start.txt':'TRAIN_START',
-            'test_start.txt':'TEST_START',
-            'train_stub.txt':'TRAIN_STUB',
-            'test_stub.txt':'TEST_STUB'}
+            'train_stub.txt':'TRAIN_STUB'
+            }
 
 sentences = LabeledLineSentence(sources)
 
@@ -97,11 +92,8 @@ def write_array_to_file (file_name, array_data):
 
 qualities = ['FA','GA','B','C','START','STUB']
 train_labels = [0] * 23577
-test_labels = [0] * 5891
 train_content_file = "doc2vec_train_content.txt"
-test_content_file = "doc2vec_test_content.txt"
 train_label_file = "doc2vec_train_label.txt"
-test_label_file = "doc2vec_test_label.txt"
 train_cnt = 0
 test_cnt = 0
 for i in range (len(qualities)):
@@ -114,15 +106,6 @@ for i in range (len(qualities)):
                         myfile.write("\n")
                     train_labels [train_cnt] = qualities[i]
                     train_cnt += 1
-                key = 'TEST_' + qualities[i] + "_" + str(j)
-                data = model.docvecs[key]
-                if (len(data) == 500):
-                    with open(test_content_file, "a") as myfile:
-                        myfile.write(convert_array_to_string (data))
-                        myfile.write("\n")
-                    test_labels [test_cnt] = qualities[i]
-                    test_cnt += 1
 
 write_array_to_file (file_name = train_label_file, array_data = train_labels)
-write_array_to_file (file_name = test_label_file, array_data = test_labels)
 
