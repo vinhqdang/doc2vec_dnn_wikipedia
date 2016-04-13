@@ -56,8 +56,7 @@ class LabeledLineSentence(object):
 
 #sources = {'test-neg.txt':'TEST_NEG', 'test-pos.txt':'TEST_POS', 'train-neg.txt':'TRAIN_NEG', 'train-pos.txt':'TRAIN_POS', 'train-unsup.txt':'TRAIN_UNS'}
 
-sources = {
-            'test_fa.txt':'TEST_FA',
+sources = { 'test_fa.txt':'TEST_FA',
             'test_ga.txt':'TEST_GA',
             'test_b.txt':'TEST_B',
             'test_c.txt':'TEST_C',
@@ -70,7 +69,7 @@ model = Doc2Vec(min_count=1, window=10, size=500, sample=1e-4, negative=5, worke
 
 model.build_vocab(sentences.to_array())
 
-for epoch in range(0):
+for epoch in range(5):
     logger.info('Epoch %d' % epoch)
     model.train(sentences.sentences_perm())
 

@@ -70,7 +70,7 @@ model = Doc2Vec(min_count=1, window=10, size=500, sample=1e-4, negative=5, worke
 
 model.build_vocab(sentences.to_array())
 
-for epoch in range(20):
+for epoch in range(5):
     logger.info('Epoch %d' % epoch)
     model.train(sentences.sentences_perm())
 
