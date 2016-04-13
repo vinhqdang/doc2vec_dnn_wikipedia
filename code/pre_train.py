@@ -98,13 +98,14 @@ train_cnt = 0
 for i in range (len(qualities)):
     for j in range (30000):
                 key = 'TRAIN_' + qualities[i] + "_" + str(j)
-                data = model.docvecs[key]
-                if (len(data) == 500):
-                    with open(train_content_file, "a") as myfile:
-                        myfile.write(convert_array_to_string (data))
-                        myfile.write("\n")
-                    train_labels [train_cnt] = qualities[i]
-                    train_cnt += 1
+                if key in model.docvecs:
+                    data = model.docvecs[key]
+                    if (len(data) == 500):
+                        with open(train_content_file, "a") as myfile:
+                            myfile.write(convert_array_to_string (data))
+                            myfile.write("\n")
+                        train_labels [train_cnt] = qualities[i]
+                        train_cnt += 1
 
 write_array_to_file (file_name = train_label_file, array_data = train_labels)
 
