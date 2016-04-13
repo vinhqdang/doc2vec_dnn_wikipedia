@@ -92,10 +92,9 @@ def write_array_to_file (file_name, array_data):
 
 qualities = ['FA','GA','B','C','START','STUB']
 train_labels = [0] * 23577
-train_content_file = "doc2vec_train_content.txt"
-train_label_file = "doc2vec_train_label.txt"
+train_content_file = "doc2vec_train_content_separated.txt"
+train_label_file = "doc2vec_train_label_separated.txt"
 train_cnt = 0
-test_cnt = 0
 for i in range (len(qualities)):
     for j in range (30000):
                 key = 'TRAIN_' + qualities[i] + "_" + str(j)

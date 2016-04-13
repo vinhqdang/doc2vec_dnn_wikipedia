@@ -70,7 +70,7 @@ model = Doc2Vec(min_count=1, window=10, size=500, sample=1e-4, negative=5, worke
 
 model.build_vocab(sentences.to_array())
 
-for epoch in range(20):
+for epoch in range(0):
     logger.info('Epoch %d' % epoch)
     model.train(sentences.sentences_perm())
 
@@ -92,8 +92,8 @@ def write_array_to_file (file_name, array_data):
 
 qualities = ['FA','GA','B','C','START','STUB']
 test_labels = [0] * 5891
-train_label_file = "doc2vec_train_label.txt"
-test_label_file = "doc2vec_test_label.txt"
+est_content_file = "doc2vec_test_content_separated.txt"
+test_label_file = "doc2vec_test_label_separated.txt"
 train_cnt = 0
 test_cnt = 0
 for i in range (len(qualities)):
