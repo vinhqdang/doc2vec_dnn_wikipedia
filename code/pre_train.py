@@ -70,11 +70,11 @@ model = Doc2Vec(min_count=1, window=10, size=500, sample=1e-4, negative=5, worke
 
 model.build_vocab(sentences.to_array())
 
-for epoch in range(50):
+for epoch in range(20):
     logger.info('Epoch %d' % epoch)
     model.train(sentences.sentences_perm())
 
-model.save('./enwiki_quality.d2v')
+model.save('./enwiki_quality_train.d2v')
 
 def convert_array_to_string (data):
     res = ""

@@ -56,17 +56,12 @@ class LabeledLineSentence(object):
 
 #sources = {'test-neg.txt':'TEST_NEG', 'test-pos.txt':'TEST_POS', 'train-neg.txt':'TRAIN_NEG', 'train-pos.txt':'TRAIN_POS', 'train-unsup.txt':'TRAIN_UNS'}
 
-sources = {'train_fa.txt':'TRAIN_FA',
+sources = {
             'test_fa.txt':'TEST_FA',
-            'train_ga.txt':'TRAIN_GA',
             'test_ga.txt':'TEST_GA',
-            'train_b.txt':'TRAIN_B',
             'test_b.txt':'TEST_B',
-            'train_c.txt':'TRAIN_C',
             'test_c.txt':'TEST_C',
-            'train_start.txt':'TRAIN_START',
             'test_start.txt':'TEST_START',
-            'train_stub.txt':'TRAIN_STUB',
             'test_stub.txt':'TEST_STUB'}
 
 sentences = LabeledLineSentence(sources)
@@ -75,11 +70,11 @@ model = Doc2Vec(min_count=1, window=10, size=500, sample=1e-4, negative=5, worke
 
 model.build_vocab(sentences.to_array())
 
-for epoch in range(50):
+for epoch in range(20):
     logger.info('Epoch %d' % epoch)
     model.train(sentences.sentences_perm())
 
-model.save('./enwiki_quality.d2v')
+model.save('./enwiki_quality_test.d2v')
 
 def convert_array_to_string (data):
     res = ""
@@ -96,24 +91,13 @@ def write_array_to_file (file_name, array_data):
     f.close ()
 
 qualities = ['FA','GA','B','C','START','STUB']
-train_labels = [0] * 23577
 test_labels = [0] * 5891
-train_content_file = "doc2vec_train_content.txt"
-test_content_file = "doc2vec_test_content.txt"
 train_label_file = "doc2vec_train_label.txt"
 test_label_file = "doc2vec_test_label.txt"
 train_cnt = 0
 test_cnt = 0
 for i in range (len(qualities)):
     for j in range (30000):
-                key = 'TRAIN_' + qualities[i] + "_" + str(j)
-                data = model.docvecs[key]
-                if (len(data) == 500):
-                    with open(train_content_file, "a") as myfile:
-                        myfile.write(convert_array_to_string (data))
-                        myfile.write("\n")
-                    train_labels [train_cnt] = qualities[i]
-                    train_cnt += 1
                 key = 'TEST_' + qualities[i] + "_" + str(j)
                 data = model.docvecs[key]
                 if (len(data) == 500):
@@ -123,6 +107,5 @@ for i in range (len(qualities)):
                     test_labels [test_cnt] = qualities[i]
                     test_cnt += 1
 
-write_array_to_file (file_name = train_label_file, array_data = train_labels)
 write_array_to_file (file_name = test_label_file, array_data = test_labels)
 
