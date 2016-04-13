@@ -92,7 +92,7 @@ def write_array_to_file (file_name, array_data):
 
 qualities = ['FA','GA','B','C','START','STUB']
 test_labels = [0] * 5891
-est_content_file = "doc2vec_test_content_separated.txt"
+test_content_file = "doc2vec_test_content_separated.txt"
 test_label_file = "doc2vec_test_label_separated.txt"
 train_cnt = 0
 test_cnt = 0
